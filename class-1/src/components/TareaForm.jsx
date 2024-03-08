@@ -4,14 +4,14 @@ import { crearTarea } from '../features/tareas/tareaSlice'
 
 const TareaForm = () => {
 
-    const [descripcion, setDescripcion] = useState('')
+    const [description, setDescripcion] = useState('')
 
     const dispatch = useDispatch()
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        dispatch(crearTarea({ descripcion }))
+        dispatch(crearTarea({ description }))
         setDescripcion('')
     }
 
@@ -20,12 +20,12 @@ const TareaForm = () => {
             <section className="form">
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
-                        <label htmlFor="descripcion">Descripción:</label>
+                        <label htmlFor="description">Descripción:</label>
                         <input
                             type="text"
-                            name="descripcion"
-                            id="descripcion"
-                            value={descripcion}
+                            name="description"
+                            id="description"
+                            value={description}
                             onChange={(e) => setDescripcion(e.target.value)}
                         />
                     </div>
