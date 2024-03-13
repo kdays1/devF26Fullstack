@@ -15,33 +15,35 @@ const Dashboard = () => {
     const { tareas, isLoading, isError, isSuccess, message } = useSelector((state) => state.tarea)
 
     useEffect(() => {
-        if(isError) {
-          console.log(message)
+
+        if (isError) {
+            console.log(message)
         }
 
         if (!user) {
             navigate('/login')
-        } 
-      // else {
-      //     //Hay que poner el get aqui
-      //     dispatch(getTareas())
-      // }
+        } else {
+            //Hay que poner el get aqui
+            dispatch(getTareas())
+        }
 
         return () => {
-          dispatch(reset())
+            dispatch(reset())
         }
 
     }, [user, navigate, isError, message, dispatch])
 
     if (isLoading) {
-      return <Spinner/>
+        return <Spinner />
     }
+
     return (
         <>
             <section className='heading'>
                 <h3>Bienvenido {user && user.name}</h3>
                 <p>Dashborad de Tareas</p>
             </section>
+
             <TareaForm />
 
             <section className='content'>
@@ -55,9 +57,9 @@ const Dashboard = () => {
                     <h3>No hay tareas para mostrar</h3>
                 )}
             </section>
+
         </>
     )
 }
 
 export default Dashboard
-

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'https://ruby-concerned-grasshopper.cyclic.app/api/tareas/'
+const API_URL = 'https://teal-vast-narwhal.cyclic.app/api/tareas/'
 
 //Crear Tarea
 const crearTarea = async (tareaData, token) => {
@@ -20,7 +20,7 @@ const getTareas = async (token) => {
             Authorization: `Bearer ${token}`
         }
     }
-    const response = await axios.post(API_URL, config)
+    const response = await axios.get(API_URL, config)
 
     return response.data
 }
@@ -31,7 +31,7 @@ const deleteTarea = async (id, token) => {
             Authorization: `Bearer ${token}`
         }
     }
-    const response = await axios.post(API_URL + id, config)
+    const response = await axios.delete(API_URL + id, config)
 
     return response.data
 }
